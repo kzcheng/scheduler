@@ -43,6 +43,13 @@ export default function useApplicationData(initial) {
         appointments: res[1].data,
         interviewers: res[2].data,
       });
+    // It may be a good idea to catch some errors. I'm not quite sure what errors might happen yet.
+    // I guess the API server not running is probably the biggest error.
+    // Anyway, I'm not quite sure what should I do with the error stuff yet.
+    }).catch((error) => {
+      console.log(error.response.status);
+      console.log(error.response.headers);
+      console.log(error.response.data);
     });
   // I'm still not quite sure what is the condition that cause this useEffect to trigger.
   // I think maybe it only triggers once...? Then how am I interacting with the API?
@@ -50,6 +57,10 @@ export default function useApplicationData(initial) {
   //TODO Figure out if using an empty array here is an issue.
   }, []);
 
+  console.log(state);
+
+  // In what is being returned, only state is a object (or you can say an interface to access the current state).
+  // All other stuff are functions, waiting to be called.
   return {
     state,
 
