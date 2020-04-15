@@ -14,13 +14,10 @@ export default function Form(props) {
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
 
-  const reset = function() {
+  // Trigger this function when the user cancels the attempt to make an appointment.
+  const cancel = function() {
     setName("");
     setInterviewer(null);
-  };
-
-  const cancel = function() {
-    reset();
     props.onCancel();
   };
 
@@ -28,7 +25,7 @@ export default function Form(props) {
   // Currently, it only checks if the name is empty.
   // To be honest, I'm not sure what will happen if you try to save an interview with no interviewer selected.
   // So we might need to work on here more after the project is done.
-  //TODO Check having no interviewer selected is possible to book an interview after the project is completed.
+  //TODO After the project is completed, check if having no interviewer selected is possible to book an interview.
   const validate = function() {
     if (name === "") {
       setError("Student name cannot be blank");
