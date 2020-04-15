@@ -22,13 +22,14 @@ export default function Form(props) {
   };
 
   // This function will check if the things details inputted are valid.
-  // Currently, it only checks if the name is empty.
-  // To be honest, I'm not sure what will happen if you try to save an interview with no interviewer selected.
-  // So we might need to work on here more after the project is done.
-  //TODO After the project is completed, check if having no interviewer selected is possible to book an interview.
   const validate = function() {
     if (name === "") {
-      setError("Student name cannot be blank");
+      setError("Student name cannot be empty");
+      return;
+    }
+
+    if (interviewer === null) {
+      setError("An interviewer must be selected.");
       return;
     }
   
