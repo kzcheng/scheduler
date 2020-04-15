@@ -1,12 +1,12 @@
-/**
- * Important File
- */
+// Important File
 
+// Libraries
 import React from 'react';
-import "components/Appointment/styles.scss";
-
+// Styles
+import "styles/Appointment.scss";
+// Custom Hooks
 import useVisualMode from "hooks/useVisualMode";
-
+// Components
 import Header from "components/Appointment/Header";
 import Show from "components/Appointment/Show";
 import Empty from "components/Appointment/Empty";
@@ -14,6 +14,7 @@ import Form from "components/Appointment/Form";
 import Status from "components/Appointment/Status";
 import Confirm from "components/Appointment/Confirm";
 import Error from "components/Appointment/Error";
+
 
 //TODO Do I really need this? Maybe just using strings will be much easier?
 const EMPTY = "EMPTY";

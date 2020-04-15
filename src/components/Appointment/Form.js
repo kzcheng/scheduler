@@ -1,10 +1,12 @@
+// Libraries
 import React, { useState } from "react";
-
+// Components
 import InterviewerList from "components/InterviewerList";
 import Button from "components/Button";
 
 /**
  * This is the component that the user sees when they are trying to create or edit an appointment.
+ *
  * @param {*} props
  */
 export default function Form(props) {

@@ -1,7 +1,9 @@
+// Libraries
 import React from "react";
 import PropTypes from 'prop-types';
-
-import "components/InterviewerList.scss";
+// Styles
+import "styles/InterviewerList.scss";
+// Components
 import InterviewerListItem from "components/InterviewerListItem";
 
 export default function InterviewerList(props) {
