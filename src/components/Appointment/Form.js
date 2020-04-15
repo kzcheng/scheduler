@@ -7,7 +7,7 @@ import Button from "components/Button";
 /**
  * This is the component that the user sees when they are trying to create or edit an appointment.
  *
- * @param {*} props
+ * @param props
  */
 export default function Form(props) {
   // Those are the states this component will use.
