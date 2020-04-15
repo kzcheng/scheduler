@@ -1,3 +1,7 @@
+/**
+ * This is also am important file that grabs data from API.
+ * I need to find a way to understand this file.
+ */
 import { useEffect, useReducer } from "react";
 import axios from "axios";
 import reducer, {
