@@ -57,39 +57,44 @@ export default function useApplicationData(initial) {
   //TODO Figure out if using an empty array here is an issue.
   }, []);
 
-  console.log(state);
+  const setDay = day => dispatch({ type: SET_DAY, day });
+
+  const bookInterview = (id, interview) => {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    return axios.put(`/api/appointments/${id}`, appointment)
+      .then(
+        dispatch({ type: SET_INTERVIEW, id, interview })
+      ).then(dispatch({ type: DECREASE_DAYS_SPOTS }));
+  };
+
+  const editInterview = (id, interview) => {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    return axios.put(`/api/appointments/${id}`, appointment)
+      .then(
+        dispatch({ type: SET_INTERVIEW, id, interview })
+      );
+  };
+
+  const cancelInterview = (id) => {
+    axios
+      .delete(`/api/appointments/${id}`)
+      .then(dispatch({ type: INCREASE_DAYS_SPOTS }));
+  };
+
 
   // In what is being returned, only state is a object (or you can say an interface to access the current state).
   // All other stuff are functions, waiting to be called.
   return {
     state,
-
-    setDay: day => dispatch({ type: SET_DAY, day }),
-
-    bookInterview: (id, interview) => {
-      const appointment = {
-        ...state.appointments[id],
-        interview: { ...interview }
-      };
-      return axios.put(`/api/appointments/${id}`, appointment)
-        .then(
-          dispatch({ type: SET_INTERVIEW, id, interview })
-        ).then(dispatch({ type: DECREASE_DAYS_SPOTS }));
-    },
-
-    editInterview: (id, interview) => {
-      const appointment = {
-        ...state.appointments[id],
-        interview: { ...interview }
-      };
-      return axios.put(`/api/appointments/${id}`, appointment)
-        .then(
-          dispatch({ type: SET_INTERVIEW, id, interview })
-        );
-    },
-
-    cancelInterview: (id) => axios
-      .delete(`/api/appointments/${id}`)
-      .then(dispatch({ type: INCREASE_DAYS_SPOTS })),
+    setDay,
+    bookInterview,
+    editInterview,
+    cancelInterview
   };
 }
