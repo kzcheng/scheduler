@@ -1,6 +1,11 @@
+// Libraries
 import { useState } from "react";
 
 export default function useVisualMode(initial) {
+  //TODO Should I make history not a state? It's never accessed from outside this class.
+
+  // The states can be considered as the "main public variables" of this class.
+  // As in, they need to be accessed from outside this class thing.
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
