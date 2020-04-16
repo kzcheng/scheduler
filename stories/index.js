@@ -184,9 +184,13 @@ const interviewer = interviewers[0];
       onSave={action("onSave")}
       onCancel={action("onCancel")}
     />)
+    // There is a bug for the following two component stories. They will crash if you click on any buttons.
+    // This is because the effects of the buttons are hard coded into each component.
+    // Trying to fix this bug that only occurs in testing stories will require a complete redesign of the project structure.
+    // So I will just leave it as this.
     .add("Appointment Empty", () => (
       <Fragment>
-        <Appointment id={1} time="12pm" />
+        <Appointment id={1} time="12pm"/>
         <Appointment id="last" time="1pm" />
       </Fragment>
     ))
