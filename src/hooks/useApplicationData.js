@@ -51,10 +51,7 @@ export default function useApplicationData(initial) {
       console.log(error.response.headers);
       console.log(error.response.data);
     });
-  // I'm still not quite sure what is the condition that cause this useEffect to trigger.
-  // I think maybe it only triggers once...? Then how am I interacting with the API?
-  // Wait maybe it means I'm not interacting with the API? I'm just writing stuff to the API?
-  //TODO Figure out if using an empty array here is an issue.
+  // An empty array here means this useEffect block will only be triggered once.
   }, []);
 
   const setDay = day => {

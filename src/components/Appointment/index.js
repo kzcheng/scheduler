@@ -16,7 +16,8 @@ import Confirm from "components/Appointment/Confirm";
 import Error from "components/Appointment/Error";
 
 
-//TODO Do I really need this? Maybe just using strings will be much easier?
+// Constants
+// Useful for code safety
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
@@ -27,8 +28,7 @@ const EDIT = "EDIT";
 const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
-//TODO WARNING! WARNING! WARNING! THIS PART IS EXTREMELY MESSY AND NEEDS REFACTORING AND COMMENTING.
-// PLEASE DO SO AS SOON AS YOU CAN UNDERSTAND WHAT EVERYTHING IS DOING.
+
 
 export default function Appointment(props) {
 
@@ -39,6 +39,8 @@ export default function Appointment(props) {
     // If there is an interview, show the interview. Else, display an empty block.
     props.interview ? SHOW : EMPTY
   );
+
+  //TODO Rename those functions so they have more clear names.
 
   const saveStuff = function(name, interviewer) {
     const interview = {
@@ -85,6 +87,8 @@ export default function Appointment(props) {
   const confirmDelete = function() {
     transition(CONFIRM);
   };
+
+  //TODO For all the modes down bellow, is there an easier way to manage them?
 
   return (
     <article className="appointment" data-testid="appointment">
