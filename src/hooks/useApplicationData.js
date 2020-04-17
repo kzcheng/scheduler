@@ -57,14 +57,18 @@ export default function useApplicationData(initial) {
   //TODO Figure out if using an empty array here is an issue.
   }, []);
 
-  const setDay = day => dispatch({ type: SET_DAY, day });
+  const setDay = day => {
+    return dispatch({ type: SET_DAY, day });
+  };
 
   const bookInterview = (id, interview) => {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
     };
-    return axios.put(`/api/appointments/${id}`, appointment)
+
+    return axios
+      .put(`/api/appointments/${id}`, appointment)
       .then(
         dispatch({ type: SET_INTERVIEW, id, interview })
       ).then(dispatch({ type: DECREASE_DAYS_SPOTS }));
@@ -75,14 +79,16 @@ export default function useApplicationData(initial) {
       ...state.appointments[id],
       interview: { ...interview }
     };
-    return axios.put(`/api/appointments/${id}`, appointment)
+    
+    return axios
+      .put(`/api/appointments/${id}`, appointment)
       .then(
         dispatch({ type: SET_INTERVIEW, id, interview })
       );
   };
 
   const cancelInterview = (id) => {
-    axios
+    return axios
       .delete(`/api/appointments/${id}`)
       .then(dispatch({ type: INCREASE_DAYS_SPOTS }));
   };
