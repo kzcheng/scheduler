@@ -12,8 +12,6 @@ import { getInterview, getAppointmentsForDay, getInterviewersForDay } from "help
 import Appointment from "components/Appointment";
 import DayList from "components/DayList";
 
-
-
 export default function Application(props) {
   const {
     state,
@@ -40,6 +38,9 @@ export default function Application(props) {
       );
     }
   );
+
+
+  //TODO Consider separating the sidebar and schedule into two components
 
   return (
     <main className="layout">
