@@ -66,9 +66,10 @@ export default function useApplicationData(initial) {
 
     return axios
       .put(`/api/appointments/${id}`, appointment)
-      .then(
-        dispatch({ type: SET_INTERVIEW, id, interview })
-      ).then(dispatch({ type: DECREASE_DAYS_SPOTS }));
+      .then(()=>{
+        dispatch({ type: SET_INTERVIEW, id, interview });
+        dispatch({ type: DECREASE_DAYS_SPOTS });
+      });
   };
 
   const editInterview = (id, interview) => {
@@ -80,14 +81,21 @@ export default function useApplicationData(initial) {
     return axios
       .put(`/api/appointments/${id}`, appointment)
       .then(
-        dispatch({ type: SET_INTERVIEW, id, interview })
+        () => {
+          dispatch({ type: SET_INTERVIEW, id, interview }
+          );
+        }
       );
   };
 
   const cancelInterview = (id) => {
     return axios
       .delete(`/api/appointments/${id}`)
-      .then(dispatch({ type: INCREASE_DAYS_SPOTS }));
+      // Add a res param here if you need to console log test.
+      .then(() => {
+        // console.log(res);
+        dispatch({ type: INCREASE_DAYS_SPOTS });
+      });
   };
 
 
