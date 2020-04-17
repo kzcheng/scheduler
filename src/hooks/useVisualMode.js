@@ -23,18 +23,36 @@ export default function useVisualMode(initial) {
       output += entry + ", ";
     }
     // output = output.substring(0, -2);
-    console.log(output);
+    console.log("History is " + output);
   };
 
-  const transition = function(newMode, replace = false) {
-    console.log(`newMode is ` + newMode);
+  // const transition = function(newMode, shouldReplace = false) {
+  //   if (shouldReplace) {
+  //     history.pop();
+  //   }
+
+  //   setMode(newMode);
+  //   setHistory(prev => [...history, newMode]);
+  // };
+
+  const transition = function(newMode, shouldReplace = false) {
+    // console.log(`newMode is ` + newMode);
+    
     setMode(newMode);
-    if (replace) {
-      setHistory([...history.slice(0, -1), newMode]);
+    console.log("Current Mode:", mode);
+    console.log("New Mode:", newMode);
+
+    if (shouldReplace) {
+      setHistory(prev => [...prev.slice(0, -1), newMode]);
     } else {
-      setHistory([...history, newMode]);
+      setHistory(prev => [...prev, newMode]);
     }
-    logHistory();
+
+    console.log("History:", history);
+    
+    
+    // setTimeout(() => {
+    // }, 1000);
   };
 
   const back = function() {
