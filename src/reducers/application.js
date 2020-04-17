@@ -12,6 +12,8 @@ export const DECREASE_DAYS_SPOTS = "DECREASE_DAYS_SPOTS";
 //     To be honest I don't quite know what this does.
 //     I think it's a helper? Except this is more used for situations where you need to access the state?
 
+//ASK What's a reducer?
+
 export default function reducer(state, action) {
   const actions = {
     SET_DAY: () => {
