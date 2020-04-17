@@ -42,7 +42,7 @@ export default function useVisualMode(initial) {
    */
   const back = function() {
     // Can't go back if there isn't any history.
-    if (h.length <= 1) {
+    if (history.length <= 1) {
       return;
     }
 
