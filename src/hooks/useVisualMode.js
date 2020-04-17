@@ -17,13 +17,24 @@ export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
+  const logHistory = function() {
+    let output = "";
+    for (const entry of history) {
+      output += entry + ", ";
+    }
+    // output = output.substring(0, -2);
+    console.log(output);
+  };
+
   const transition = function(newMode, replace = false) {
+    console.log(`newMode is ` + newMode);
     setMode(newMode);
     if (replace) {
       setHistory([...history.slice(0, -1), newMode]);
     } else {
       setHistory([...history, newMode]);
     }
+    logHistory();
   };
 
   const back = function() {
