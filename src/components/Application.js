@@ -39,9 +39,6 @@ export default function Application(props) {
     }
   );
 
-
-  //TODO Consider separating the sidebar and schedule into two components
-
   return (
     <main className="layout">
       <section className="sidebar">

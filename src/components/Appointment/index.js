@@ -40,8 +40,6 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
-  //TODO Rename those functions so they have more clear names.
-
   const saveStuff = function(name, interviewer) {
     const interview = {
       student: name,
