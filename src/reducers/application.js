@@ -8,10 +8,6 @@ export const SET_INTERVIEW = "SET_INTERVIEW";
 export const INCREASE_DAYS_SPOTS = "INCREASE_DAYS_SPOTS";
 export const DECREASE_DAYS_SPOTS = "DECREASE_DAYS_SPOTS";
 
-//TODO This file needs more attention.
-//     To be honest I don't quite know what this does.
-//     I think it's a helper? Except this is more used for situations where you need to access the state?
-
 export default function reducer(state, action) {
   const actions = {
     SET_DAY: () => {

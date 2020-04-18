@@ -88,8 +88,6 @@ export default function Appointment(props) {
     transition(CONFIRM);
   };
 
-  //TODO For all the modes down bellow, is there an easier way to manage them?
-
   return (
     <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
