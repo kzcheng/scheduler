@@ -1,14 +1,8 @@
-// Important File
-
-// Libraries
 import React from "react";
-// Styles
+
 import "styles/Application.scss";
-// Custom Hooks
 import useApplicationData from "hooks/useApplicationData";
-// Helpers
 import { getInterview, getAppointmentsForDay, getInterviewersForDay } from "helpers/selectors";
-// Components
 import Appointment from "components/Appointment";
 import DayList from "components/DayList";
 

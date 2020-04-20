@@ -1,6 +1,5 @@
-// Libraries
 import React from "react";
-// Components
+
 import Button from "components/Button";
 
 export default function Confirm(props) {

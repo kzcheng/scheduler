@@ -1,6 +1,5 @@
-// Libraries
 import React, { useState } from "react";
-// Components
+
 import InterviewerList from "components/InterviewerList";
 import Button from "components/Button";
 
@@ -11,7 +10,6 @@ import Button from "components/Button";
  */
 export default function Form(props) {
   // Those are the states this component will use.
-  // It may be a better idea to use some other kind of method to store data. But I'm not sure what kinds are available now.
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");

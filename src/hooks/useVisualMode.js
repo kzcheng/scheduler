@@ -1,4 +1,3 @@
-// Libraries
 import { useState } from "react";
 
 export default function useVisualMode(initial) {
@@ -8,18 +7,12 @@ export default function useVisualMode(initial) {
 
   // The states can be considered as the "main public variables" of this class.
   // As in, they need to be accessed from outside this class thing.
+  // They are also kept for as long as the created hook still exist.
+  // So even after the function call that happens when you create a hook ends, those variables still persist.
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
-  // Useless debug function
-  // const logHistory = function() {
-  //   let output = "";
-  //   for (const entry of history) {
-  //     output += entry + ", ";
-  //   }
-  //   // output = output.substring(0, -2);
-  //   console.log("History is " + output);
-  // };
+  // I mean, you remember Classes right? Those hooks are just like classes.
 
   /**
    * Transition into another mode.

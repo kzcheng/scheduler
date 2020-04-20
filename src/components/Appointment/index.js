@@ -1,12 +1,7 @@
-// Important File
-
-// Libraries
 import React from 'react';
-// Styles
+
 import "styles/Appointment.scss";
-// Custom Hooks
 import useVisualMode from "hooks/useVisualMode";
-// Components
 import Header from "components/Appointment/Header";
 import Show from "components/Appointment/Show";
 import Empty from "components/Appointment/Empty";

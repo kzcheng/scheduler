@@ -1,12 +1,6 @@
-/**
- * This is also am important file that grabs data from API.
- * I need to find a way to understand this file.
- */
-
-// Libraries
 import { useEffect, useReducer } from "react";
 import axios from "axios";
-// Reducers
+
 import reducer, {
   SET_DAY,
   SET_APPLICATION_DATA,
@@ -28,9 +22,9 @@ export default function useApplicationData(initial) {
     interviewers: [],
   });
 
-  // This is the main useEffect thing.
-  // I'm not quite sure how should I explain this.
-  // It grabs data from the API server whenever a change happens on the UI.
+  // This is the main useEffect thing..
+  // It grabs data from the API server once, when the user first opens the webpage.
+  // A refresh will cause this to trigger again. But other minor UI changes will not cause this to trigger.
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
@@ -45,7 +39,6 @@ export default function useApplicationData(initial) {
       });
     // It may be a good idea to catch some errors. I'm not quite sure what errors might happen yet.
     // I guess the API server not running is probably the biggest error.
-    // Anyway, I'm not quite sure what should I do with the error stuff yet.
     }).catch((error) => {
       console.log(error.response.status);
       console.log(error.response.headers);
@@ -93,7 +86,7 @@ export default function useApplicationData(initial) {
       .delete(`/api/appointments/${id}`)
       // Add a res param here if you need to console log test.
       .then(() => {
-        // console.log(res);
+        // like console.log(res);
         dispatch({ type: INCREASE_DAYS_SPOTS });
       });
   };
