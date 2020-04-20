@@ -35,3 +35,7 @@ src/
 # Notes for Code Reviewer
 I customized this project a lot where I see fit. So the code is starting to look really different from the skeleton provided by LHL.
 Some files may be where you didn't think they will be. Come and check out this file if you can't find something.
+The biggest change is probably that I renamed all "\_\_test\_\_" into ".test". Which should not break anything, other than code readability for other people.
+
+Also, the style scss files are all moved into src/styles.
+
