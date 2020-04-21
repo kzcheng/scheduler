@@ -54,8 +54,6 @@ describe("Form", () => {
     expect(onSave).not.toHaveBeenCalled();
   });
 
-  //TODO Fix bug where call onsave can't be called
-  // The interviewer is missing
   it("calls onSave function when the name and interviewer is defined", () => {
     /* 1. Create the mock onSave function */
     const onSave = jest.fn();
@@ -103,4 +101,5 @@ describe("Form", () => {
   
     expect(onCancel).toHaveBeenCalledTimes(1);
   });
+  
 });
