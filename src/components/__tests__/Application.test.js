@@ -1,5 +1,6 @@
 // Rendering `<Application />` down below, so we need React.createElement
 import React from "react";
+import axios from "axios";
 
 // Import our helper functions from the react-testing-library
 // The render function allows us to render Components
@@ -139,5 +140,9 @@ describe("Appointment", () => {
     );
   
     expect(getByText(day, "1 spot remaining")).toBeInTheDocument();
+  });
+
+  it("shows the save error when failing to save an appointment", () => {
+    axios.put.mockRejectedValueOnce();
   });
 });
