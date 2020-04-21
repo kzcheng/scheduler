@@ -40,9 +40,7 @@ export default function useApplicationData(initial) {
     // It may be a good idea to catch some errors. I'm not quite sure what errors might happen yet.
     // I guess the API server not running is probably the biggest error.
     }).catch((error) => {
-      console.log(error.response.status);
-      console.log(error.response.headers);
-      console.log(error.response.data);
+      console.log(error);
     });
   // An empty array here means this useEffect block will only be triggered once.
   }, []);
