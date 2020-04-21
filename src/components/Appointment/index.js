@@ -18,7 +18,7 @@ const SHOW = "SHOW";
 const CREATE = "CREATE";
 const SAVING = "SAVING";
 const DELETING = "DELETING";
-const CONFIRM = "CONFIRM";
+const CONFIRM_DELETE = "CONFIRM_DELETE";
 const EDIT = "EDIT";
 const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
@@ -35,6 +35,7 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  //TODO Change saveStuff and Edit into the same function
   const saveStuff = function(name, interviewer) {
     const interview = {
       student: name,
@@ -72,15 +73,6 @@ export default function Appointment(props) {
       });
   };
 
-  const editStuff = function() {
-    transition(EDIT);
-  };
-
-
-  const confirmDelete = function() {
-    transition(CONFIRM);
-  };
-
   return (
     <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
@@ -97,14 +89,16 @@ export default function Appointment(props) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
-          onDelete={confirmDelete}
-          onEdit={editStuff}
+          onDelete={() => transition(CONFIRM_DELETE)}
+          onEdit={() => transition(EDIT)}
         />)}
 
       {mode === CREATE && (
         <Form
           interviewers={props.interviewers}
           onCancel={back}
+          //TODO Change to
+          //     onSave={(student, interviewer) => saveStuff(student, interviewer, false)}
           onSave={saveStuff}
         />)}
 
@@ -127,7 +121,7 @@ export default function Appointment(props) {
           message={"Deleting"}
         />)}
 
-      {mode === CONFIRM && (
+      {mode === CONFIRM_DELETE && (
         <Confirm
           message="Are you sure you would like to delete?"
           onConfirm={deleteStuff}

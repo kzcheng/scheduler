@@ -5,6 +5,7 @@ import "styles/DayListItem.scss";
 
 export default function DayListItem(props) {
   const formatSpots = function(spots) {
+    //TODO Use switch statement here.
     if (spots === 0) {
       return "no spots remaining";
     } else {

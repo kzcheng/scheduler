@@ -35,6 +35,7 @@ export default function Application(props) {
 
   return (
     <main className="layout">
+      
       <section className="sidebar">
         <img
           className="sidebar--centered"
@@ -51,12 +52,14 @@ export default function Application(props) {
           alt="Lighthouse Labs"
         />
       </section>
+
       <section className="schedule">
         <section className="schedule">
           {appointments}
-          <Appointment key="last" time="5pm" />
+          <Appointment key="last" time="5pm"/>
         </section>
       </section>
+
     </main>
   );
 }

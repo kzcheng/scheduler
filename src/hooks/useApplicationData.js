@@ -51,6 +51,7 @@ export default function useApplicationData(initial) {
     return dispatch({ type: SET_DAY, day });
   };
 
+  //TODO Refactor both into setInterview (with boolean is new)
   const bookInterview = (id, interview) => {
     const appointment = {
       ...state.appointments[id],
@@ -73,12 +74,9 @@ export default function useApplicationData(initial) {
     
     return axios
       .put(`/api/appointments/${id}`, appointment)
-      .then(
-        () => {
-          dispatch({ type: SET_INTERVIEW, id, interview }
-          );
-        }
-      );
+      .then(() => {
+        dispatch({ type: SET_INTERVIEW, id, interview });
+      });
   };
 
   const cancelInterview = (id) => {
