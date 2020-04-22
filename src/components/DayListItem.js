@@ -5,13 +5,13 @@ import "styles/DayListItem.scss";
 
 export default function DayListItem(props) {
   const formatSpots = function(spots) {
-    //TODO Use switch statement here.
-    if (spots === 0) {
+    switch (spots) {
+    case 0:
       return "no spots remaining";
-    } else {
-      return spots === 1
-        ? `${spots} spot remaining`
-        : `${spots} spots remaining`;
+    case 1:
+      return `${spots} spot remaining`;
+    default :
+      return `${spots} spots remaining`;
     }
   };
 
