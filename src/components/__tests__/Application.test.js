@@ -20,8 +20,6 @@ import {
 // Import the component that we are testing
 import Application from "components/Application";
 
-//TODO Do I need to wrap everything in act() or something?
-
 describe("Appointment", () => {
   it("defaults to Monday and changes the schedule when a new day is selected", async() => {
     const { getByText } = render(<Application />);
