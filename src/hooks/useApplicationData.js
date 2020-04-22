@@ -49,8 +49,7 @@ export default function useApplicationData(initial) {
     return dispatch({ type: SET_DAY, day });
   };
 
-  //TODO Refactor both into setInterview (with boolean is new)
-  const bookInterview = (id, interview) => {
+  const setInterview = (id, interview, isNewCreation) => {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -60,20 +59,9 @@ export default function useApplicationData(initial) {
       .put(`/api/appointments/${id}`, appointment)
       .then(()=>{
         dispatch({ type: SET_INTERVIEW, id, interview });
-        dispatch({ type: DECREASE_DAYS_SPOTS });
-      });
-  };
-
-  const editInterview = (id, interview) => {
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview }
-    };
-    
-    return axios
-      .put(`/api/appointments/${id}`, appointment)
-      .then(() => {
-        dispatch({ type: SET_INTERVIEW, id, interview });
+        if (isNewCreation) {
+          dispatch({ type: DECREASE_DAYS_SPOTS });
+        }
       });
   };
 
@@ -93,8 +81,7 @@ export default function useApplicationData(initial) {
   return {
     state,
     setDay,
-    bookInterview,
-    editInterview,
-    cancelInterview
+    setInterview,
+    cancelInterview,
   };
 }

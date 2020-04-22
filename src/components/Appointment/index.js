@@ -35,34 +35,20 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
-  //TODO Change saveStuff and Edit into the same function
-  const saveStuff = function(name, interviewer) {
+  const saveInterview = function(student, interviewer, isNewCreation) {
     const interview = {
-      student: name,
+      student,
       interviewer
     };
 
     transition(SAVING);
 
-    props.bookInterview(props.id, interview)
+    props.setInterview(props.id, interview, isNewCreation)
       .then(() => transition(SHOW))
       .catch(error => transition(ERROR_SAVE, true));
   };
 
-  const saveStuffEdit = function(name, interviewer) {
-    const interview = {
-      student: name,
-      interviewer
-    };
-
-    transition(SAVING);
-
-    props.editInterview(props.id, interview)
-      .then(() => transition(SHOW))
-      .catch(error => transition(ERROR_SAVE, true));
-  };
-
-  const deleteStuff = function() {
+  const deleteInterview = function() {
     transition(DELETING);
 
     props.cancelInterview(props.id)
@@ -97,16 +83,14 @@ export default function Appointment(props) {
         <Form
           interviewers={props.interviewers}
           onCancel={back}
-          //TODO Change to
-          //     onSave={(student, interviewer) => saveStuff(student, interviewer, false)}
-          onSave={saveStuff}
+          onSave={(...parm) =>  saveInterview(...parm, true)}
         />)}
 
       {mode === EDIT && (
         <Form
           interviewers={props.interviewers}
           onCancel={back}
-          onSave={saveStuffEdit}
+          onSave={(...parm) =>  saveInterview(...parm, false)}
           name={props.interview.student}
           interviewer={props.interview.interviewer.id}
         />)}
@@ -124,7 +108,7 @@ export default function Appointment(props) {
       {mode === CONFIRM_DELETE && (
         <Confirm
           message="Are you sure you would like to delete?"
-          onConfirm={deleteStuff}
+          onConfirm={deleteInterview}
           onCancel={back}
         />)}
 
@@ -137,9 +121,7 @@ export default function Appointment(props) {
       {mode === ERROR_DELETE && (
         <Error
           message={"Error Deleting"}
-          onClose={() => {
-            transition(SHOW);
-          }}
+          onClose={() => transition(SHOW)}
         />)}
     </article>
   );
