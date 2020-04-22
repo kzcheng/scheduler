@@ -15,6 +15,7 @@ import {
   getByPlaceholderText,
   queryByText,
   queryByAltText,
+  wait,
 } from "@testing-library/react";
 
 // Import the component that we are testing
@@ -138,6 +139,8 @@ describe("Appointment", () => {
     );
   
     expect(getByText(day, "1 spot remaining")).toBeInTheDocument();
+
+    await wait();
   });
 
   it("shows the save error when failing to save an appointment", () => {
