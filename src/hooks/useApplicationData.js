@@ -49,7 +49,6 @@ export default function useApplicationData(initial) {
     return dispatch({ type: SET_DAY, day });
   };
 
-  //TODO Refactor both into setInterview (with boolean is new)
   const setInterview = (id, interview, isNewCreation) => {
     const appointment = {
       ...state.appointments[id],

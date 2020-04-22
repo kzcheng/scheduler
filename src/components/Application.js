@@ -24,12 +24,7 @@ export default function Application(props) {
           {...appointment}
           interview={getInterview(state, appointment.interview)}
           interviewers={interviewers}
-          bookInterview={(id, interview) => {
-            return setInterview(id, interview, true);
-          }}
-          editInterview={(id, interview) => {
-            return setInterview(id, interview, false);
-          }}
+          setInterview={setInterview}
           cancelInterview={cancelInterview}
         />
       );
